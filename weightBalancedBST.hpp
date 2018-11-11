@@ -36,14 +36,16 @@ public:
 
     // std::vector<int> inorder(); // Return inorder traversal of tree as vector
 
-    std::ostream& print(std::ostream& out) const;
+    std::ostream& print(std::ostream& out) const; // Layer wise
+
+    std::ostream& printPreOrder(std::ostream& out) const;
     std::ostream& printInOrder(std::ostream& out) const;
     // std::ostream& print(std::ostream& out) const; ///< Printing
 
     // bool operator==(const WBBST& rhs);
     // bool operator!=(const WBBST& rhs);
 
-    void rebalance();
+    // void rebalance();
 
 private:
 
@@ -65,7 +67,7 @@ private:
         ~Node();
     };
 
-    std::ostream& print(std::ostream& out, const Node* n) const;
+    std::ostream& printPreOrder(std::ostream& out, const Node* n) const;
     std::ostream& printInOrder(std::ostream& out, const Node* n) const;
 
 
@@ -75,10 +77,10 @@ private:
     int height_; // Height of tree
 
 
-    Node* rebalance(Node* n); // Rebalances tree given the current root, and returns new root
-    std::vector<int> inorder(Node* n);
+    Node* rebalance(Node* n, int e); // Rebalances tree given the current root, and returns new root
+    std::vector<int> inorder(Node* n, int e);
     Node* vectorToBST(const std::vector<int>& v, int start, int end, int depth);
-
+    void undoSizing(Node* cur);
 };
 
 inline std::ostream& operator<<(std::ostream& out, const WBBST& w)

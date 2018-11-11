@@ -95,25 +95,28 @@ bool rebalanceTest(){
     TestingLogger log{"print test"};
     cout << "--------------" << endl;
     
-    WBBST w;
-    w.insert(10);
-    w.insert(1);
-    w.insert(16);
-    w.insert(14);
-    w.insert(12);
-    w.insert(7);
-    w.insert(15);
-    w.insert(20);
-    w.insert(21);
-    w.insert(22);
-    w.insert(23);
-    w.insert(24);
-    w.insert(25);
+    WBBST w (0.6);
+    for(int i = 0; i < 20; ++i){
+        w.insert(i);
+    }
+    // w.insert(10);
+    // w.insert(1);
+    // w.insert(16);
+    // w.insert(14);
+    // w.insert(12);
+    // w.insert(7);
+    // w.insert(15);
+    // w.insert(20);
+    // w.insert(21);
+    // w.insert(22);
+    // w.insert(23);
+    // w.insert(24);
+    // w.insert(25);
 
     cout << w << endl;
-
-    w.rebalance();
-    cout << w << endl;
+    cout << " Size: " << w.size() << ", Height: " << w.height() << endl;
+    // w.rebalance();
+    // cout << w << endl;
 
     return log.summarize();
 
@@ -136,10 +139,10 @@ int main()
     alarm(10);                          // set the timer at 10 seconds
 
     // List tests
-    affirm(constructorTest());
-    affirm(insertTest());
-    // affirm(inorderTest());
-    affirm(printTest());
+    // affirm(constructorTest());
+    // affirm(insertTest());
+    // // affirm(inorderTest());
+    // affirm(printTest());
     affirm(rebalanceTest());
 
 
